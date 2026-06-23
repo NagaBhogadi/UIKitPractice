@@ -34,8 +34,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				MobileAppTests/MobileAppTests.swift,
 			);
 			target = 9AB5DFE02FEAC18B00C9C8E8 /* MobileApp */;
+		};
+		9AB5E0202FEAD58E00C9C8E8 /* Exceptions for "MobileApp" folder in "MobileAppTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				MobileAppTests/MobileAppTests.swift,
+			);
+			target = 9AB5DFF62FEAC18D00C9C8E8 /* MobileAppTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -44,13 +52,9 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				9AB5E0092FEAC18D00C9C8E8 /* Exceptions for "MobileApp" folder in "MobileApp" target */,
+				9AB5E0202FEAD58E00C9C8E8 /* Exceptions for "MobileApp" folder in "MobileAppTests" target */,
 			);
 			path = MobileApp;
-			sourceTree = "<group>";
-		};
-		9AB5DFFA2FEAC18D00C9C8E8 /* MobileAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MobileAppTests;
 			sourceTree = "<group>";
 		};
 		9AB5E0042FEAC18D00C9C8E8 /* MobileAppUITests */ = {
@@ -89,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				9AB5DFE32FEAC18B00C9C8E8 /* MobileApp */,
-				9AB5DFFA2FEAC18D00C9C8E8 /* MobileAppTests */,
 				9AB5E0042FEAC18D00C9C8E8 /* MobileAppUITests */,
 				9AB5DFE22FEAC18B00C9C8E8 /* Products */,
 			);
@@ -142,9 +145,6 @@
 			);
 			dependencies = (
 				9AB5DFF92FEAC18D00C9C8E8 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				9AB5DFFA2FEAC18D00C9C8E8 /* MobileAppTests */,
 			);
 			name = MobileAppTests;
 			packageProductDependencies = (
@@ -293,7 +293,6 @@
 				INFOPLIST_FILE = MobileApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,7 +323,6 @@
 				INFOPLIST_FILE = MobileApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
