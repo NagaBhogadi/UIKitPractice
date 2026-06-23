@@ -43,7 +43,8 @@ final class NetworkManager: NetworkProtocol, Sendable {
                 return
             }
             
-            // parse the data into the model
+//MARK: -  parse the data into the model
+            
             do {
                 let productResponse = try JSONDecoder().decode(ProductResponse.self, from: receivedData)
                 print(productResponse.products.count)
