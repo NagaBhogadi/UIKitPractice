@@ -13,7 +13,7 @@ final class ProductCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let priceLabel = UILabel()
     private let descriptionLabel = UILabel()
-//    private let imageView = UIImageView()
+
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

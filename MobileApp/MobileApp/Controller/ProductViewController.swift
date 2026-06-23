@@ -46,9 +46,7 @@ final class ProductViewController: UIViewController {
 //    MARK: - API Call
 
     private func fetchProducts() {
-        NetworkManager.shared.fetchDataFrom(
-            serverUrl: APIConstants.smartphonesURL
-        ) { [weak self] fetchedProducts in
+        NetworkManager.shared.fetchDataFrom( serverUrl: APIConstants.smartphonesURL) { [weak self] fetchedProducts in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 print("Products count:", fetchedProducts.count)
