@@ -6,11 +6,14 @@
 //
 
 import UIKit
+// MARK: - Product View Controller
 
 final class ProductViewController: UIViewController {
 
     private let tableView = UITableView()
     private var products: [Product] = []
+    
+//    MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,8 @@ final class ProductViewController: UIViewController {
         fetchProducts()
     }
 
+//    MARK: - Set up TableView
+    
     private func setupTableView() {
         view.addSubview(tableView)
 
@@ -37,14 +42,14 @@ final class ProductViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
+//    MARK: - API Call
 
     private func fetchProducts() {
         NetworkManager.shared.fetchDataFrom(
             serverUrl: APIConstants.smartphonesURL
         ) { [weak self] fetchedProducts in
-
             guard let self = self else { return }
-
             DispatchQueue.main.async {
                 print("Products count:", fetchedProducts.count)
                 self.products = fetchedProducts
@@ -54,22 +59,20 @@ final class ProductViewController: UIViewController {
     }
 }
 
-extension ProductViewController: UITableViewDataSource {
+// MARK: - UITableViewDataSource
 
+extension ProductViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return products.count
     }
-
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ProductCell.identifier,
             for: indexPath
         ) as? ProductCell else {
             return UITableViewCell()
         }
-
         cell.configure(with: products[indexPath.row])
         return cell
     }

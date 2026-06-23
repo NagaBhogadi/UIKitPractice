@@ -60,16 +60,3 @@ final class NetworkManager: NetworkProtocol, Sendable {
 
 
 
-//class ViewController: UIViewController {
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//        NetworkManager.shared.fetchDataFrom(serverUrl: "https://dummyjson.com/products/category/smartphones") { fetchedPost in
-//            print("fetched data method completed::\(fetchedPost.count)")
-//        }
-//        
-//        
-//    }
-//    
-//}
