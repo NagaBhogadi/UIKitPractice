@@ -13,6 +13,7 @@ final class ProductCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let priceLabel = UILabel()
     private let descriptionLabel = UILabel()
+    private let productImageView = UIImageView()
 
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -29,29 +30,44 @@ final class ProductCell: UITableViewCell {
         priceLabel.font = .systemFont(ofSize: 16)
         descriptionLabel.font = .systemFont(ofSize: 14)
         descriptionLabel.numberOfLines = 2
-
+        productImageView.contentMode = .scaleAspectFit
+        productImageView.clipsToBounds = true
+        
         let stackView = UIStackView(arrangedSubviews: [
             titleLabel,
             priceLabel,
             descriptionLabel
         ])
-
+        
         stackView.axis = .vertical
         stackView.spacing = 6
-
-        contentView.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        
+        let mainStackView = UIStackView(arrangedSubviews: [
+            productImageView,
+            stackView
         ])
+        mainStackView.axis = .horizontal
+        mainStackView.spacing = 8
+        mainStackView.alignment = .top
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(mainStackView)
+        
+        NSLayoutConstraint.activate([
+            productImageView.widthAnchor.constraint(equalToConstant: 100),
+            productImageView.heightAnchor.constraint(equalToConstant: 100),
+            mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 12),
+            mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -16),
+            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
+            ])
+            
     }
 
     func configure(with product: Product) {
         titleLabel.text = product.title
         priceLabel.text = "$\(product.price)"
         descriptionLabel.text = product.description
+        productImageView.fetchDataFrom(serverUrl: product.images.first ?? "")
+        
     }
 }

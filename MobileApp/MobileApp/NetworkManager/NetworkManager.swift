@@ -43,6 +43,7 @@ final class NetworkManager: NetworkProtocol, Sendable {
                 return
             }
             
+            
 //MARK: -  parse the data into the model
             
             do {
