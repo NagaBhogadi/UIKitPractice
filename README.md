@@ -83,7 +83,6 @@ https://dummyjson.com/products/category/smartphones
 
 ## Product API App Flow
 
-```text
 API URL
    ↓
 URLRequest
@@ -100,17 +99,24 @@ Products Array
    ↓
 UITableView reloadData
    ↓
-Product List Display
-```
+ProductCell Configure
+   ↓
+Image URL
+   ↓
+UIImageView Extension
+   ↓
+URLSession Image Fetch
+   ↓
+Product List with Images
 
 ---
 
 ## Screenshots
 
 ### Product API Screen
+<img width="295" height="640" alt="Simulator Screen Recording - iPhone 17 Pro - 2026-06-24 at 08 11 07" src="https://github.com/user-attachments/assets/e94c30c0-36b1-4072-999b-197a0820da8c" />
 
-<<img width="295" height="640" alt="Simulator Screen Recording - iPhone 17 Pro - 2026-06-23 at 10 16 14" src="https://github.com/user-attachments/assets/f9664b23-8835-478e-8de4-10bbb52b0447" />
->
+
 
 ---
 
@@ -122,6 +128,8 @@ Product List Display
 - REST API Integration
 - URLSession Networking
 - JSON Parsing using Decodable
+- Product Image Loading from URL
+- UIImageView Extension for Reusable Image Fetching
 - MVC Architecture
 - Completion Handler
 - @escaping Closure
@@ -188,16 +196,29 @@ View
 
 ### View
 
-`ProductCell` displays product title, price, and description.
+ProductCell displays:
+
+- Product Image
+- Product Title
+- Product Price
+- Product Description
 
 ### Controller
 
 `ProductViewController` fetches data and reloads the table view.
 
-### Network Layer
+### Networking
 
-`NetworkManager` handles URLSession API calls.
-
+- URL
+- URLRequest
+- URLSession
+- dataTask
+- REST API
+- JSONDecoder
+- Decodable
+- Image Downloading
+- UIImageView Extension
+- Async Image Loading
 ---
 
 ## Getting Started
@@ -243,8 +264,7 @@ Shift + Command + Y Show Console
 
 ## Future Improvements
 
-- Add product images
-- Add detail screen
+- Add product detail screen
 - Add search functionality
 - Add async/await networking
 - Add image caching
