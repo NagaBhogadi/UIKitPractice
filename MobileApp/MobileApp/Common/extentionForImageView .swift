@@ -30,10 +30,10 @@ extension UIImageView {
             
             /// data is of DATA , which is serialized Object , it contains data in machine readable format
             /// To get the swift post array , we need to convert data object to model
-            DispatchQueue.main.async {
+            DispatchQueue.main.async {[weak self] in
                 let downlodedImage = UIImage(data: receivedData)
-                self.image = downlodedImage
-                self.image = UIImage(data: receivedData)
+                self?.image = downlodedImage
+                self?.image = UIImage(data: receivedData)
                 print(downlodedImage)
             }
         }

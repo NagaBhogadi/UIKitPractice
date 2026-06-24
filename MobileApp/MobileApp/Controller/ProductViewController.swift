@@ -9,32 +9,35 @@ import UIKit
 // MARK: - Product View Controller
 
 final class ProductViewController: UIViewController {
-
+    
     private let tableView = UITableView()
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     private var products: [Product] = []
     
-//    MARK: - View Life Cycle
-
+    //    MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Smartphones"
         view.backgroundColor = .white
-
+        
         setupTableView()
+        setupLoader()
         fetchProducts()
+        
     }
-
-//    MARK: - Set up TableView
+    
+    //    MARK: - Set up TableView
     
     private func setupTableView() {
         view.addSubview(tableView)
-
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.register(ProductCell.self, forCellReuseIdentifier: ProductCell.identifier)
         tableView.rowHeight = 130
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -43,17 +46,35 @@ final class ProductViewController: UIViewController {
         ])
     }
     
-//    MARK: - API Call
-
+    //    MARK: - API Call
+    
     private func fetchProducts() {
+        activityIndicator.startAnimating()
         NetworkManager.shared.fetchDataFrom( serverUrl: APIConstants.smartphonesURL) { [weak self] fetchedProducts in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
                 print("Products count:", fetchedProducts.count)
                 self.products = fetchedProducts
                 self.tableView.reloadData()
+                
             }
         }
+    }
+    
+    
+    
+    //MARK: -Setup loader
+    
+    private func setupLoader() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.hidesWhenStopped = true
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
 }
 

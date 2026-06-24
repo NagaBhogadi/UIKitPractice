@@ -55,6 +55,7 @@ final class ProductCell: UITableViewCell {
         NSLayoutConstraint.activate([
             productImageView.widthAnchor.constraint(equalToConstant: 100),
             productImageView.heightAnchor.constraint(equalToConstant: 100),
+           
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 12),
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -16),
