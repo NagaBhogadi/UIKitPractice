@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        let viewModel = MobileViewModel()
+        let mobileVC = ProductViewController(viewModel: viewModel)
         let window = UIWindow(windowScene: windowScene)
               
-              let productVC = ProductViewController()
-              let navigationController = UINavigationController(rootViewController: productVC)
+         
+              let navigationController = UINavigationController(rootViewController: mobileVC)
               
               window.rootViewController = navigationController
               window.makeKeyAndVisible()
