@@ -9,12 +9,15 @@ import UIKit
 
 // MARK: - Mobile View Controller
 
-final class ProductViewController: UIViewController {
+final class ProductViewController: UIViewController, UISearchResultsUpdating {
+    
+    
     
     // MARK: - UI Components
     
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    private let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Properties
     //   TODO: -  need to replace with dependency injection
@@ -38,7 +41,7 @@ final class ProductViewController: UIViewController {
         
         title = "Smartphones"
         view.backgroundColor = .white
-        
+        setupSearchBar()
         setupTableView()
         setupActivityIndicator()
         showLoader()
@@ -50,6 +53,18 @@ final class ProductViewController: UIViewController {
             }
             
         }
+        
+    }
+    
+    //    MARK: - Setup SearchBar
+    private func setupSearchBar() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Movies"
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
         
     }
     
@@ -86,6 +101,13 @@ final class ProductViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+    // MARK: - UISearchResultsUpdating
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        viewModel.searchMobile(with: searchText)
+        tableView.reloadData()
+    }
 }
 
 //MARK: - Progress Method
@@ -103,22 +125,23 @@ extension ProductViewController {
         tableView.reloadData()
     }
 }
-
-// MARK: - UITableViewDataSource
-
-extension ProductViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfMobiles()
-    }
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: ProductCell.identifier,
-            for: indexPath
-        ) as? ProductCell else {
-            return UITableViewCell()
+    
+    // MARK: - UITableViewDataSource
+    
+    extension ProductViewController: UITableViewDataSource {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            viewModel.numberOfMobiles()
         }
-        cell.configure(with: viewModel.Mobile(at: indexPath.row))
-        return cell
+        func tableView(_ tableView: UITableView,
+                       cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: ProductCell.identifier,
+                for: indexPath
+            ) as? ProductCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: viewModel.Mobile(at: indexPath.row))
+            return cell
+        }
     }
-}
+

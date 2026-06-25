@@ -11,6 +11,7 @@ protocol MobileViewModelProtocol: AnyObject {
     func fetchMobile(completion: @escaping() -> Void)
     func numberOfMobiles()-> Int
     func Mobile(at index: Int) -> Product
+    func searchMobile(with searchText: String)
 }
 
 class MobileViewModel: MobileViewModelProtocol {
@@ -18,6 +19,7 @@ class MobileViewModel: MobileViewModelProtocol {
     // MARK: - Properties
     
     private var products: [Product] = []
+    private var filteredProducts: [Product] = []
     
     // MARK: - API Call
     
@@ -30,6 +32,7 @@ class MobileViewModel: MobileViewModelProtocol {
             }
             guard let self = self else { return }
             self.products = fetchedMovies
+            self.filteredProducts = fetchedMovies
             completion()
         }
     }
@@ -37,10 +40,17 @@ class MobileViewModel: MobileViewModelProtocol {
     // MARK: - Helper Methods
     
     func numberOfMobiles() -> Int {
-        return products.count
+        return filteredProducts.count
     }
     func Mobile(at index: Int) -> Product{
-        return products[index]
+        return filteredProducts[index]
+    }
+    func searchMobile(with searchText: String) {
+        if searchText.isEmpty {
+            filteredProducts = products
+        } else {
+            filteredProducts = products.filter { movie in movie.title.localizedStandardContains(searchText)}
+        }
     }
 }
 
