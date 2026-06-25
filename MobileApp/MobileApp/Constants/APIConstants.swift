@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - API URLs
+
 enum APIConstants {
     static let smartphonesURL = "https://dummyjson.com/products/category/smartphones"
 }

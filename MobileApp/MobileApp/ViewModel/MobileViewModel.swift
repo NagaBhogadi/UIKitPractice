@@ -11,14 +11,14 @@ protocol MobileViewModelProtocol: AnyObject {
     func fetchMobile(completion: @escaping() -> Void)
     func numberOfMobiles()-> Int
     func Mobile(at index: Int) -> Product
-
-    
 }
 
 class MobileViewModel: MobileViewModelProtocol {
     
+    // MARK: - Properties
+    
     private var products: [Product] = []
-   
+    
     // MARK: - API Call
     
     func fetchMobile(completion: @escaping() -> Void) {
@@ -33,14 +33,15 @@ class MobileViewModel: MobileViewModelProtocol {
             completion()
         }
     }
-// MARK:- Helper Method
     
-func numberOfMobiles() -> Int {
-            return products.count
-        }
-func Mobile(at index: Int) -> Product{
-            return products[index]
-        }
+    // MARK: - Helper Methods
+    
+    func numberOfMobiles() -> Int {
+        return products.count
+    }
+    func Mobile(at index: Int) -> Product{
+        return products[index]
+    }
 }
 
 

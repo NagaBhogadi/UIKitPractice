@@ -8,16 +8,19 @@
 import UIKit
 
 extension UIImageView {
+    
+    // MARK: - Fetch Image
+    
     func fetchDataFrom(serverUrl: String) {
         guard let serverURL = URL(string: serverUrl) else {
             print("Server URL is invalid")
-            // we need to return something
             return self.image = UIImage(systemName: "heart.fill")
         }
         
         let urlRequest = URLRequest(url: serverURL)
         let urlSession = URLSession.shared
         urlSession.dataTask(with: urlRequest) { data, response, error in
+            
             // TODO: - code goes here
             
             if error != nil {
@@ -28,8 +31,8 @@ extension UIImageView {
                 return self.image = UIImage(systemName: "heart.fill")
             }
             
-            /// data is of DATA , which is serialized Object , it contains data in machine readable format
-            /// To get the swift post array , we need to convert data object to model
+            // MARK: - Update Image
+            
             DispatchQueue.main.async {[weak self] in
                 let downlodedImage = UIImage(data: receivedData)
                 self?.image = downlodedImage

@@ -7,11 +7,18 @@
 
 import Foundation
 
+// MARK: - Movie Response
+
 struct ProductResponse: Decodable{
     let products: [Product]
 }
 
+// MARK: - Movie Model
+
 struct Product: Decodable {
+    
+    // MARK: - Properties
+    
     let id: Int
     let title: String
     let description: String

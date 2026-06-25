@@ -62,11 +62,6 @@
 			path = MobileAppUITests;
 			sourceTree = "<group>";
 		};
-		9AB5E3032FED33C800C9C8E8 /* ViewModel */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +92,6 @@
 		9AB5DFD82FEAC18B00C9C8E8 = {
 			isa = PBXGroup;
 			children = (
-				9AB5E3032FED33C800C9C8E8 /* ViewModel */,
 				9AB5DFE32FEAC18B00C9C8E8 /* MobileApp */,
 				9AB5E0042FEAC18D00C9C8E8 /* MobileAppUITests */,
 				9AB5DFE22FEAC18B00C9C8E8 /* Products */,
@@ -131,7 +125,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				9AB5DFE32FEAC18B00C9C8E8 /* MobileApp */,
-				9AB5E3032FED33C800C9C8E8 /* ViewModel */,
 			);
 			name = MobileApp;
 			packageProductDependencies = (

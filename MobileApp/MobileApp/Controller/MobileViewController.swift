@@ -6,13 +6,22 @@
 //
 
 import UIKit
-// MARK: - Product View Controller
+
+// MARK: - Mobile View Controller
 
 final class ProductViewController: UIViewController {
     
+    // MARK: - UI Components
+    
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    // MARK: - Properties
+    //   TODO: -  need to replace with dependency injection
+    
     private let viewModel: MobileViewModelProtocol
+    
+    // MARK: - Initializer
     
     init(viewModel: MobileViewModelProtocol) {
         self.viewModel = viewModel
@@ -21,7 +30,6 @@ final class ProductViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     //    MARK: - View Life Cycle
     
@@ -63,13 +71,8 @@ final class ProductViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
     
- 
-    
-    
-    
-    // MARK: - Setup Loader
+    // MARK: - Setup ActivityIndicator
     
     private func setupActivityIndicator() {
         view.addSubview(activityIndicator)
@@ -92,17 +95,14 @@ extension ProductViewController {
         activityIndicator.startAnimating()
         tableView.isHidden = true
     }
-    
     func hideLoader() {
         activityIndicator.stopAnimating()
         tableView.isHidden = false
     }
-    
     func reloadTableView() {
         tableView.reloadData()
     }
 }
-
 
 // MARK: - UITableViewDataSource
 

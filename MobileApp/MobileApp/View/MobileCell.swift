@@ -7,24 +7,31 @@
 import UIKit
 
 final class ProductCell: UITableViewCell {
-
+    
+    // MARK: - Identifier
+    
     static let identifier = "ProductCell"
-
+    
+    // MARK: - UI Components
+    
     private let titleLabel = UILabel()
     private let priceLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let productImageView = UIImageView()
-
-
+    
+    // MARK: - Initializer
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
     }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    // MARK: - Setup UI
+    
     private func setupUI() {
         titleLabel.font = .boldSystemFont(ofSize: 18)
         priceLabel.font = .systemFont(ofSize: 16)
@@ -55,15 +62,17 @@ final class ProductCell: UITableViewCell {
         NSLayoutConstraint.activate([
             productImageView.widthAnchor.constraint(equalToConstant: 100),
             productImageView.heightAnchor.constraint(equalToConstant: 100),
-           
+            
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 12),
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -16),
             mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12)
-            ])
-            
+        ])
+        
     }
-
+    
+    // MARK: - Configure Cell
+    
     func configure(with product: Product) {
         titleLabel.text = product.title
         priceLabel.text = "$\(product.price)"

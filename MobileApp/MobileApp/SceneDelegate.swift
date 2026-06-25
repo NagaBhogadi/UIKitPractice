@@ -10,21 +10,21 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
+    //MARK: - Scene Life Cycle
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         let viewModel = MobileViewModel()
         let mobileVC = ProductViewController(viewModel: viewModel)
         let window = UIWindow(windowScene: windowScene)
-              
-         
-              let navigationController = UINavigationController(rootViewController: mobileVC)
-              
-              window.rootViewController = navigationController
-              window.makeKeyAndVisible()
-              
-              self.window = window
+        let navigationController = UINavigationController(rootViewController: mobileVC)
+        
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
