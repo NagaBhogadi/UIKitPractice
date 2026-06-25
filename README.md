@@ -1,79 +1,124 @@
-# UIKit Practice Repository
+# 📱 MobileApp
 
-A hands-on iOS practice repository for learning UIKit, programmatic UI, table views, navigation, API integration, JSON parsing, and unit testing using Swift.
-
----
-
-## Overview
-
-This repository contains multiple UIKit practice projects and coding exercises.  
-The main focus is learning iOS development using Swift and UIKit with real examples.
+A clean and modern iOS application built with **UIKit** using **Programmatic Auto Layout** and the **MVVM Architecture**. The app fetches smartphone products from the DummyJSON REST API and displays them in a responsive table view with asynchronous image loading.
 
 ---
 
-## Repository Structure
+# ✨ Features
+
+* 📱 Display smartphone products
+* 🌐 REST API Integration using URLSession
+* 🏗️ MVVM Architecture
+* 🧩 Dependency Injection
+* 📦 Codable JSON Parsing
+* 🖼️ Asynchronous Image Loading
+* 📋 Custom UITableViewCell
+* 🎯 Programmatic UIKit (No Storyboards)
+* ⏳ Activity Indicator while loading data
+* 🧹 Clean Code with MARK sections
+* ♻️ Reusable Components
+
+---
+
+# 📸 Screenshots
+
+<img width="300" height="700" alt="Simulator Screenshot - iPhone 17 Pro - 2026-06-25 at 10 36 47" src="https://github.com/user-attachments/assets/79a6b9fb-0fd9-452b-8286-e40a01e2a3d3" />
+
+---
+
+# 🛠️ Tech Stack
+
+| Technology            | Description              |
+| --------------------- | ------------------------ |
+| Swift                 | Programming Language     |
+| UIKit                 | User Interface Framework |
+| MVVM                  | Architecture Pattern     |
+| URLSession            | Networking               |
+| Codable               | JSON Parsing             |
+| Auto Layout           | Programmatic Constraints |
+| UITableView           | Product Listing          |
+| UIImageView Extension | Image Downloading        |
+| Dependency Injection  | Loose Coupling           |
+
+---
+
+# 📂 Project Structure
 
 ```text
-├── CalculatorTest
-│   ├── Calculator.swift
-│   ├── CalculatorProtocol.swift
-│   └── Unit Test Examples
+MobileApp
 │
-├── MatrixController
-│   ├── MatrixController.swift
-│   └── Matrix Operation Examples
+├── Constants
+│   └── APIConstants.swift
 │
-├── MobileApp
-│   ├── Constants
-│   │   └── APIConstants.swift
-│   │
-│   ├── Model
-│   │   └── Product.swift
-│   │
-│   ├── View
-│   │   └── ProductCell.swift
-│   │
-│   ├── Controller
-│   │   └── ProductViewController.swift
-│   │
-│   ├── NetworkManager
-│   │   └── NetworkManager.swift
-│   │
-│   ├── AppDelegate.swift
-│   ├── SceneDelegate.swift
-│   ├── Info.plist
-│   ├── Assets.xcassets
-│   └── LaunchScreen.storyboard
+├── Models
+│   └── Product.swift
 │
-├── MyTableView
-│   ├── Movie.swift
-│   ├── MovieListViewController.swift
-│   ├── MovieCell.swift
-│   └── Assets.xcassets
+├── ViewModels
+│   └── ProductViewModel.swift
 │
-├── MyTableView.xcodeproj
+├── Views
+│   └── ProductCell.swift
 │
-├── MyTableViewTests
-│   └── Unit Tests
+├── Controllers
+│   └── ProductViewController.swift
 │
-├── MyTableViewUITests
-│   └── UI Tests
+├── Network
+│   └── NetworkManager.swift
 │
-├── ProgramNavigUI
-│   ├── HomeViewController.swift
-│   ├── DetailViewController.swift
-│   └── Programmatic Navigation Examples
+├── Extensions
+│   └── UIImageView+Extension.swift
 │
-└── MovieCellTableViewCell.swift
+├── Assets.xcassets
+├── AppDelegate.swift
+└── SceneDelegate.swift
 ```
 
 ---
 
-## Product API UIKit Project
+# 🔄 Application Flow
 
-The `MobileApp` folder contains a UIKit application that fetches smartphone product data from a public REST API and displays it in a `UITableView`.
+```text
+App Launch
+      │
+      ▼
+SceneDelegate
+      │
+      ▼
+ProductViewController
+      │
+      ▼
+ProductViewModel
+      │
+      ▼
+NetworkManager
+      │
+      ▼
+DummyJSON REST API
+      │
+      ▼
+JSON Response
+      │
+      ▼
+Codable Decoding
+      │
+      ▼
+Product Model
+      │
+      ▼
+ViewModel Stores Data
+      │
+      ▼
+UITableView Reload
+      │
+      ▼
+Display Products
+```
 
-### API Used
+---
+
+# 🌐 API
+
+Endpoint:
 
 ```text
 https://dummyjson.com/products/category/smartphones
@@ -81,200 +126,41 @@ https://dummyjson.com/products/category/smartphones
 
 ---
 
-## Product API App Flow
+# 🧠 Concepts Practiced
 
-API URL
-   ↓
-URLRequest
-   ↓
-URLSession.shared.dataTask
-   ↓
-JSON Data
-   ↓
-JSONDecoder
-   ↓
-ProductResponse Model
-   ↓
-Products Array
-   ↓
-UITableView reloadData
-   ↓
-ProductCell Configure
-   ↓
-Image URL
-   ↓
-UIImageView Extension
-   ↓
-URLSession Image Fetch
-   ↓
-Product List with Images
+* MVVM Architecture
+* Protocol-Oriented Programming
+* Dependency Injection
+* URLSession Networking
+* Codable
+* Auto Layout
+* UITableView
+* UITableViewCell
+* Async Image Loading
+* Extensions
+* Singleton Pattern
+* Activity Indicator
+* Memory Management (`weak self`)
+* Programmatic UIKit
 
 ---
 
-## Screenshots
+# 🚀 Future Improvements
 
-### Product API Screen
-<img width="295" height="640" alt="Simulator Screen Recording - iPhone 17 Pro - 2026-06-24 at 08 11 07" src="https://github.com/user-attachments/assets/e94c30c0-36b1-4072-999b-197a0820da8c" />
-
-
-
----
-
-## Features
-
-- UIKit Programmatic UI
-- UITableView
-- Custom UITableViewCell
-- REST API Integration
-- URLSession Networking
-- JSON Parsing using Decodable
-- Product Image Loading from URL
-- UIImageView Extension for Reusable Image Fetching
-- MVC Architecture
-- Completion Handler
-- @escaping Closure
-- @Sendable Practice
-- Navigation Controller
-- Unit Testing Practice
+* 🔍 Product Search
+* ❤️ Favorites
+* 📄 Product Detail Screen
+* 🗂️ Category Filtering
+* 💾 Offline Caching
+* 🔄 Pull to Refresh
+* 📖 Pagination
+* 🧪 Unit Testing
+* ⚡ Swift Concurrency (async/await)
 
 ---
 
-## Concepts Practiced
-
-### UIKit
-
-- UIViewController
-- UITableView
-- UITableViewDataSource
-- UITableViewCell
-- UINavigationController
-- Auto Layout
-- Programmatic Constraints
-
-### Networking
-
-- URL
-- URLRequest
-- URLSession
-- dataTask
-- REST API
-- JSONDecoder
-- Decodable
-
-### Swift
-
-- Struct
-- Class
-- Protocol
-- Singleton
-- Closure
-- @escaping
-- @Sendable
-- MVC
-- ARC
-- Memory Management
-
-### Testing
-
-- XCTest
-- Unit Testing
-- UI Testing
-
----
-
-## Architecture
-
-This project follows MVC architecture.
-
-```text
-Model
-  ↓
-Controller
-  ↓
-View
-```
-
-### View
-
-ProductCell displays:
-
-- Product Image
-- Product Title
-- Product Price
-- Product Description
-
-### Controller
-
-`ProductViewController` fetches data and reloads the table view.
-
-### Networking
-
-- URL
-- URLRequest
-- URLSession
-- dataTask
-- REST API
-- JSONDecoder
-- Decodable
-- Image Downloading
-- UIImageView Extension
-- Async Image Loading
----
-
-## Getting Started
-
-### Clone Repository
-
-```bash
-git clone https://github.com/NagaBhogadi/MobileApp.git
-```
-
-### Open Project
-
-```bash
-open MyTableView.xcodeproj
-```
-
-### Run App
-
-```text
-Command + R
-```
-
-### Run Tests
-
-```text
-Command + U
-```
-
----
-
-## Xcode Shortcuts Used
-
-```text
-Command + R        Run App
-Command + .        Stop App
-Shift + Command + K Clean Build Folder
-Command + /        Comment or Uncomment
-Control + I        Format Code
-Shift + Command + Y Show Console
-```
-
----
-
-## Future Improvements
-
-- Add product detail screen
-- Add search functionality
-- Add async/await networking
-- Add image caching
-- Add MVVM architecture
-- Add pagination
-
----
-
-## Author
+# 👩‍💻 Author
 
 **Naga Rajitha Bhogadi**
 
-Learning iOS Development using Swift, UIKit, SwiftUI, Networking, and Testing.
+Passionate iOS Developer focused on building scalable, maintainable, and user-friendly iOS applications using UIKit and modern software design principles.
